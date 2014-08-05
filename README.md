@@ -19,4 +19,3 @@ This is the token manager for the http://revisit.link project.
         console.log(err);
       }
     });
-  });
