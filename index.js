@@ -43,7 +43,7 @@ var RevisitToken = function (options) {
         next(new Error('No token found'));
         return;
       }
-      console.log(err)
+
       next(null, token);
     });
   };
