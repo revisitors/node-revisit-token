@@ -1,6 +1,6 @@
 {
   "name": "revisit-tokens",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "revisit.link token management",
   "main": "index.js",
   "dependencies": {
@@ -19,7 +19,7 @@
     "type": "git",
     "url": "git://github.com/ednapiranha/node-revisit-tokens.git"
   },
-  "keywords": ["revisit.link", "tokens", "auth"],
+  "keywords": ["revisit.link", "tokens", "auth", "leveldb"],
   "author": "Edna Piranha <jen@ednapiranha.com> (http://ednapiranha.com)",
   "license": "BSD"
 }
