@@ -4,7 +4,7 @@ This is the token manager for the http://revisit.link project.
 
 ## Usage
 
-    var RevisitToken = require('../index');
+    var RevisitToken = require('revisit-token');
     var rt = new RevisitToken();
 
     // Generate a new token
