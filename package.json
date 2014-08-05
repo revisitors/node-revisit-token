@@ -1,22 +1,25 @@
 {
-  "name": "npm-template",
+  "name": "revisit-tokens",
   "version": "0.0.1",
-  "description": "npm template",
-  "main": "main.js",
-  "dependencies": {},
+  "description": "revisit.link token management",
+  "main": "index.js",
+  "dependencies": {
+    "uuid": "~1.4.1",
+    "level": "~0.18.0",
+    "level-ttl": "~0.6.1"
+  },
   "devDependencies": {
     "mocha": "~1.21.3",
-    "should": "~4.0.4",
-    "uuid": "~1.4.1"
+    "should": "~4.0.4"
   },
   "scripts": {
     "test": "./node_modules/.bin/mocha"
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/ednapiranha/npm-template.git"
+    "url": "git://github.com/ednapiranha/node-revisit-tokens.git"
   },
-  "keywords": [],
+  "keywords": ["revisit.link", "tokens", "auth"],
   "author": "Edna Piranha <jen@ednapiranha.com> (http://ednapiranha.com)",
   "license": "BSD"
 }
