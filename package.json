@@ -1,5 +1,5 @@
 {
-  "name": "revisit-tokens",
+  "name": "revisit-token",
   "version": "1.0.0",
   "description": "revisit.link token management",
   "main": "index.js",
