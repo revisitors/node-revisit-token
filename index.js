@@ -7,12 +7,16 @@ var ttl = require('level-ttl');
 var TTL_LIMIT = 1000 * 60 * 60 * 24; // 24 hours
 
 var RevisitToken = function (options) {
+  if (!(this instanceof RevisitToken)) {
+    return new RevisitToken(options);
+  }
+
   if (!options) {
     options = {};
   }
 
   var dbPath = options.db || './db-tokens';
-  var limit = parseInt(options.ttl, 10) || TTL_LIMIT;
+  var defaultTTL = parseInt(options.ttl, 10) || TTL_LIMIT;
   var frequency = parseInt(options.frequency, 10) || 10000;
 
   var db = level(dbPath, {
@@ -23,14 +27,20 @@ var RevisitToken = function (options) {
   db = ttl(db, { checkFrequency: frequency || 10000 });
 
   this.generate = function (next) {
-    var token = uuid.v4();
+    this.putToken(uuid.v4(), next);
+  };
+
+  this.putToken = function (token, ttl, next) {
+    if (typeof ttl == 'function') {
+      next = ttl;
+      ttl = defaultTTL;
+    }
 
     db.put('token!' + token, token, {
-      ttl: limit
+      ttl: ttl
     }, function (err) {
       if (err) {
-        next(err);
-        return;
+        return next(err);
       }
 
       next(null, token);
@@ -40,8 +50,7 @@ var RevisitToken = function (options) {
   this.getToken = function (token, next) {
     db.get('token!' + token, function (err, token) {
       if (err || !token) {
-        next(new Error('No token found'));
-        return;
+        return next(new Error('No token found'));
       }
 
       next(null, token);
